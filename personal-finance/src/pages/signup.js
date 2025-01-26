@@ -22,14 +22,14 @@ function Signup() {
           [e.target.name]:e.target.value
     });}
     //we are declaring the function to handle the form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmpassword){
           alert("passwords do not match");
           return;
         }
         try{//fetch contains two attributes where first is the link of the file running in backend 
-          const response= fetch("http://localhost:5000/signup",{
+          const response = await fetch("http://localhost:5000/api/signup",{
             //In that 2nd attribute, we are passing the object which contains the method,headers and body
             method:"POST",
             headers:{"Content-Type":"application/json"},
@@ -38,14 +38,17 @@ function Signup() {
                               email: formData.email,
                               password: formData.password}),
          } );
-          if (response.ok){
-            alert("signup successfull");
-            navigate("/confirmationpage");
 
+          if (response.ok){
+          alert("signup successfull");
+          navigate("/confirmationpage");
           }
-          else{alert("signup failed.please try again");
-            console.log(formData);
+          //this 400 is defined in the backend file
+          else if (response.status===400){
+            alert("user already exists");
           }
+          else{
+            alert("signup failed");}
         }
         catch(error){
           console.error("Error:",error);
