@@ -38,7 +38,7 @@ function Signup() {
                               email: formData.email,
                               password: formData.password}),
          } );
-
+          //if the response is ok then we are alerting signup i.e the number 200 to 299 is treated as ok which is defined in the backend file
           if (response.ok){
           alert("signup successfull");
           navigate("/confirmationpage");
