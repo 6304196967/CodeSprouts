@@ -1,5 +1,8 @@
 # CodeSprouts
+
 Project Proposal: Personal Finance Tracker
+
+# peter has entered the code
 
 Project Overview
 
