@@ -56,7 +56,7 @@ function Signup() {
         }}
   return (
     <div>
-      <h1 >Sign Up form</h1>
+      <h1 >Sign in  form</h1>
       <form className="signup-form" onSubmit={handleSubmit}>
       <label>Username:</label>
         <input type="text" name="username" value={formData.username} onChange={handleInputchange} placeholder="Enter your name:" required/>
